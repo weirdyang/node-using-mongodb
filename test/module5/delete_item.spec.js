@@ -5,7 +5,7 @@ describe('Deleting a product', () => {
     it('Add a controler to remove a product @controller-remove', (done) => {
         try {
             expect(fs.readFileSync('src/controllers/controllers.js').toString())
-                .to.contain("Product.deleteOne({ _id: req.params.ProductID}, (err, Product) => {")
+                .to.contain("Product.deleteOne({ _id: req.params.ProductID }, (err, Product) => {")
             expect(fs.readFileSync('src/controllers/controllers.js').toString())
                 .to.contain("res.json({ message: 'successfully deleted product' });")
             done();

@@ -4,7 +4,7 @@
   "description": "Mongo with NodeJS",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./index.js --exec babel-node -e js",
+    "start": "set DEBUG=app,app:*&&nodemon ./index.js --exec babel-node -e js",
     "test": "mocha --exit './test/**/*.spec.js' || true",
     "test:module2": "mocha --exit './test/module2/*.spec.js' || true",
     "test:module3": "mocha --exit './test/module3/*.spec.js' || true",

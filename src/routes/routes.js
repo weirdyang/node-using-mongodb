@@ -1,4 +1,6 @@
-const { addnewProduct, getProductWithID, getProducts } = require('../controllers/controllers');
+const {
+  addnewProduct, getProductWithID, getProducts, updateProduct, deleteProduct,
+} = require('../controllers/controllers');
 
 const routes = (app) => {
   app.route('/products')
@@ -6,7 +8,11 @@ const routes = (app) => {
     .get(getProducts);
 
   app.route('/products/:ProductID')
-    .get(getProductWithID);
+    .get(getProductWithID)
+    .put(updateProduct);
+
+  app.route('/products/:Product')
+    .delete(deleteProduct);
 };
 
 export default routes;

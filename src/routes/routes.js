@@ -9,10 +9,8 @@ const routes = (app) => {
 
   app.route('/products/:ProductID')
     .get(getProductWithID)
-    .put(updateProduct);
-
-  app.route('/products/:Product')
+    .put(updateProduct)
     .delete(deleteProduct);
 };
 
-export default routes;
+module.exports = (app) => routes(app);

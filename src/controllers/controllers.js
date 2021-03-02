@@ -5,6 +5,7 @@ const { ProductSchema } = require('../models/models');
 
 const Product = mongoose.model('Product', ProductSchema);
 
+// https://chanwingkeihaha.medium.com/my-wrong-example-of-using-document-save-in-mongoose-b21e9966b3cd
 // should use export default but tests expect this
 // eslint-disable-next-line import/prefer-default-export
 export const addnewProduct = (req, res) => {
@@ -24,7 +25,7 @@ export const getProductWithID = (req, res) => {
   Product.findById(req.params.ProductID, (err, Product) => {
     if (err) {
       debug(err);
-      res.status(400).send(err);
+      res.status(404).send(err);
     }
     res.json(Product);
   });
@@ -35,7 +36,10 @@ export const getProducts = (req, res) => {
   Product.find({}, (err, Product) => {
     if (err) {
       debug(err);
-      res.status(400).send(err);
+      res.status(404).send(err);
+    }
+    if (!Product) {
+      res.json({ message: 'No products in database' });
     }
     res.json(Product);
   });
@@ -48,7 +52,7 @@ export const updateProduct = (req, res) => {
   Product.findOneAndUpdate({ _id: req.params.ProductID }, req.body, { new: true, useFindAndModify: false }, (err, Product) => {
     if (err) {
       debug(err);
-      res.status(400).json(err);
+      res.status(404).json(err);
     }
     res.json(Product);
   });
@@ -60,7 +64,7 @@ export const deleteProduct = (req, res) => {
   Product.deleteOne({ _id: req.params.ProductID }, (err, Product) => {
     if (err) {
       debug(err, Product);
-      res.status(400).json(err);
+      res.status(404).json(err);
     }
     res.json({ message: 'successfully deleted product' });
   });

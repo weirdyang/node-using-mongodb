@@ -1,12 +1,12 @@
-import express from 'express';
-import bodyParser from 'body-parser';
+const bodyParser = require('body-parser');
+const express = require('express');
 
 const mongoose = require('mongoose');
 // const { config, mongooseOptions } = require('./src/data/config');
 const debug = require('debug')('app:index');
 
 const app = express();
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 // mongoose setup
 // mongoose.connect(`${config.mongoUrl}/${config.databaseName}`, mongooseOptions);
@@ -31,3 +31,5 @@ require('./src/routes/routes')(app);
 app.get('/', (req, res) => res.send(`Store server running on port ${PORT}`));
 
 app.listen(PORT, () => console.log(`Your server is running on port ${PORT}`));
+
+module.exports = app;

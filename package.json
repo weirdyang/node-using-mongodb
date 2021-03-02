@@ -9,12 +9,15 @@
     "test:module2": "mocha --exit './test/module2/*.spec.js' || true",
     "test:module3": "mocha --exit './test/module3/*.spec.js' || true",
     "test:module4": "mocha --exit './test/module4/*.spec.js' || true",
-    "test:module5": "mocha --exit './test/module5/*.spec.js' || true"
+    "test:module5": "mocha --exit './test/module5/*.spec.js' || true",
+    "test:routes": "mocha -r esm --exit './test/integration/*.spec.js'"
   },
   "author": "Emmanuel Henri",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "chai": "^4.3.0",
+    "chai-http": "^4.3.0",
     "debug": "^4.3.1",
     "expect.js": "^0.3.1",
     "express": "^4.17.1",
@@ -28,6 +31,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "eslint": "^7.21.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.22.1"
+    "eslint-plugin-import": "^2.22.1",
+    "esm": "^3.2.25"
   }
 }
